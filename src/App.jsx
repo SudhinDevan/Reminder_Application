@@ -1,10 +1,8 @@
-import DatePicker from "react-datepicker";
 import { useState } from "react";
 import "react-datepicker/dist/react-datepicker.css";
 import axios from "axios";
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { TimePicker } from "@mui/x-date-pickers/TimePicker";
 import dayjs from "dayjs";
 import Swal from "sweetalert2";
@@ -15,6 +13,7 @@ const App = () => {
   const [selectedTime, setSelectedTime] = useState(null);
   const [message, setMessage] = useState("");
 
+  console.log("date", startDate);
   const handleSubmit = async (e) => {
     e.preventDefault();
     Swal.fire({
@@ -56,6 +55,17 @@ const App = () => {
     setSelectedTime(dayjs(time.$d).format("HH:mm:ss"));
   };
 
+  const formatDateFn = (date) => {
+    const selectedDate = new Date(date);
+    return (
+      selectedDate.getFullYear() +
+      "-" +
+      parseInt(selectedDate.getMonth() + 1) +
+      "-" +
+      selectedDate.getDate()
+    );
+  };
+
   return (
     <>
       <div
@@ -86,26 +96,26 @@ const App = () => {
                   required
                 />
               </div>
-              <div className="p-6 inline-flex mr-10">
-                <h1 className="pt-2 font-semibold">Date:</h1>
-                <DatePicker
-                  className="w-28 ml-3 p-2 px-3 rounded-md border-gray-500 border"
-                  selected={startDate}
-                  onChange={(date) => setStartDate(date)}
-                  placeholderText="select Date"
-                  required
-                />
+              <div className="m-2 inline-flex mr-10">
+                <DemoContainer components={["DatePicker"]}>
+                  <DatePicker
+                    label="Basic date picker"
+                    value={setStartDate}
+                    onChange={(date) =>
+                      setStartDate(formatDateFn(date), "startDate")
+                    }
+                    dateFormat="dd/MM/YYYY"
+                  />
+                </DemoContainer>
               </div>
-              <div className="m-2">
-                <LocalizationProvider dateAdapter={AdapterDayjs}>
-                  <DemoContainer components={["TimePicker"]}>
-                    <TimePicker
-                      label="Basic time picker"
-                      value={selectedTime}
-                      onChange={handeleTimeChange}
-                    />
-                  </DemoContainer>
-                </LocalizationProvider>
+              <div className="m-2 mr-10">
+                <DemoContainer components={["TimePicker"]}>
+                  <TimePicker
+                    label="Basic time picker"
+                    value={selectedTime}
+                    onChange={handeleTimeChange}
+                  />
+                </DemoContainer>
               </div>
             </div>
             <div className="relative mb-3 pt-5" data-te-input-wrapper-init>
