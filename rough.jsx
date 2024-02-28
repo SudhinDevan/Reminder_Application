@@ -71,9 +71,12 @@ const App = () => {
 
   return (
     <>
-      <div className="w-full flex justify-center pt-10 md:p-0 items-center bg-gray-100 h-screen">
+      <div
+        className="w-full flex justify-center mt-10 md:mt-0 md:items-center bg-gray-100 h-screen"
+        // style={{ backgroundColor: "#FFBE98" }}
+      >
         <form
-          className="w-4/5 md:flex pt-5 md:pt-0 border-2 md:h-4/6 md:justify-center md:items-center rounded-lg border-black h-full bg-gray-200"
+          className="w-4/5 flex border-2 rounded-lg border-black h-3/5 bg-gray-200"
           onSubmit={handleSubmit}
         >
           <div>
@@ -90,7 +93,7 @@ const App = () => {
                 </label>
                 <input
                   type="email"
-                  className="md:w-3/5 border border-gray-500 h-10 p-2 mt-3 ml-5 rounded-md md:ml-0 md:mt-0 w-4/5"
+                  className="md:w-3/6 border border-gray-500 h-10 p-2 mt-3 ml-5 rounded-md md:ml-0 md:mt-0 w-4/5"
                   id="email"
                   name="email"
                   placeholder="email"
@@ -124,9 +127,9 @@ const App = () => {
               <label htmlFor="message" className="p-5 text-2xl font-semibold">
                 Message:
               </label>
-              <div className="w-11/12 md:w-full pt-3 ml-2 md:ml-24 px-3">
+              <div className="w-11/12 md:w-3/6 pt-3 ml-2 md:ml-24 px-3">
                 <textarea
-                  className="w-full border border-gray-500 p-2 rounded-md md:w-4/5"
+                  className="w-full border border-gray-500 p-2 rounded-md"
                   id="message"
                   name="message"
                   rows="4"
@@ -146,9 +149,6 @@ const App = () => {
               </button>
             </div>
           </div>
-          <h2 className="mt-10 md:hidden p-5 font-semibold text-base text-gray-500">
-            Sudhin Devan &#169;2023
-          </h2>
         </form>
       </div>
     </>
