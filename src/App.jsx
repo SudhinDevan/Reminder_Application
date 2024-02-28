@@ -8,12 +8,11 @@ import dayjs from "dayjs";
 import Swal from "sweetalert2";
 
 const App = () => {
-  const [startDate, setStartDate] = useState(new Date());
+  const [startDate, setStartDate] = useState(null);
   const [email, setEmail] = useState("");
   const [selectedTime, setSelectedTime] = useState(null);
   const [message, setMessage] = useState("");
 
-  console.log("date", startDate);
   const handleSubmit = async (e) => {
     e.preventDefault();
     Swal.fire({
@@ -40,6 +39,10 @@ const App = () => {
             startDate,
             selectedTime,
           });
+          setSelectedTime(null);
+          setMessage("");
+          setEmail("");
+          setStartDate(null);
         } catch (error) {
           Swal.fire({
             title: "Error!",
@@ -69,11 +72,11 @@ const App = () => {
   return (
     <>
       <div
-        className="w-full h-screen flex justify-center"
-        style={{ backgroundColor: "#FFBE98" }}
+        className="w-full h-screen flex justify-center bg-gray-100"
+        // style={{ backgroundColor: "#FFBE98" }}
       >
         <form className="w-4/5 flex items-center" onSubmit={handleSubmit}>
-          <div className="border-2 rounded-lg border-black h-3/5 bg-orange-200 w-full ">
+          <div className="border-2 rounded-lg border-black h-3/5 w-full bg-gray-200">
             <h1 className="text-3xl font-semibold p-4 text-center">
               Reminder Hub
             </h1>
@@ -100,7 +103,6 @@ const App = () => {
                 <DemoContainer components={["DatePicker"]}>
                   <DatePicker
                     label="Basic date picker"
-                    value={setStartDate}
                     onChange={(date) =>
                       setStartDate(formatDateFn(date), "startDate")
                     }
@@ -138,7 +140,7 @@ const App = () => {
             <div className="flex justify-center">
               <button
                 type="submit"
-                className="bg-orange-500 hover:bg-orange-400 text-white font-bold py-2 px-4 rounded"
+                className="bg-gray-500 hover:bg-orange-400 text-white font-bold py-2 px-4 rounded"
               >
                 Submit
               </button>

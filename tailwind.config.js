@@ -5,8 +5,13 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        sans: ['"Kode Mono"', 'Arial', 'sans-serif'],
+        serif: ['Merriweather', 'serif'],
+        // Add more custom font families as needed
+      },
+    },
   },
   plugins: [],
 }
-
