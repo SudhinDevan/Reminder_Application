@@ -13,9 +13,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@emotion/react": "^11.11.3",
-    "@emotion/styled": "^11.11.0",
-    "@mui/material": "^5.15.10",
     "@mui/styled-engine-sc": "^6.0.0-alpha.16",
     "@mui/x-date-pickers": "^6.19.4",
     "axios": "^1.6.7",
@@ -24,6 +21,7 @@
     "react": "^18.2.0",
     "react-datepicker": "^6.1.0",
     "react-dom": "^18.2.0",
+    "react-hot-toast": "^2.4.1",
     "react-time-picker": "^6.6.0",
     "styled-components": "^6.1.8",
     "sweetalert2": "^11.10.5"
